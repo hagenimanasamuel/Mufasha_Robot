@@ -1,0 +1,22 @@
+{
+  "name": "node",
+  "version": "1.0.0",
+  "description": "mufasha robot is an online besed robot which can be able to give real time help for everyone who ask him for help.",
+  "main": "server.js",
+  "scripts": {
+    "test": "node server.js",
+    "mufasha": "nodemon backend/server.js"
+  },
+  "author": "HAGENIMANA Samuel",
+  "license": "ISC",
+  "dependencies": {
+    "axios": "^1.7.5",
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.5",
+    "express": "^4.19.2",
+    "mysql2": "^3.11.0"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.4"
+  }
+}
