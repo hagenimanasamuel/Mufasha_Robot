@@ -51,6 +51,12 @@
   position: relative;        /* Position relative for potential pseudo-elements */
 }
 
+.text-center{
+  color: #4285F4;
+  font-weight: bold;
+  font-size: 25px;
+}
+
 /* Ensure full-width buttons */
 .w-100 {
   width: 100%;

@@ -1,6 +1,6 @@
 import React from "react";
 import { useNavigate } from 'react-router-dom'
-import "./LandPage.css"; // Import custom CSS for additional styling
+import "../../styles/LandPage/LandPage.css"; // Import custom CSS for additional styling
 import { BiKey } from "react-icons/bi";
 import { MdEmail } from "react-icons/md";
 import { FcGoogle } from "react-icons/fc"; // Google icon from react-icons
