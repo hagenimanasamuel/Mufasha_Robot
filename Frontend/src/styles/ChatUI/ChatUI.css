@@ -1,78 +1,63 @@
-.chat-container {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  width: 50%;
-  height: 80vh;
-  margin: 20px auto;
-  border: 1px solid #ccc;
-  border-radius: 10px;
-  background-color: #1f1d1d;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+
+/* Full height for containers */
+.full-height {
+  height: calc(100vh - 70px); /* Adjust based on navbar height, keeping 5px gap */
 }
 
-.chat-header {
-  padding: 10px;
-  background-color: #007bff;
-  color: white;
-  border-top-left-radius: 10px;
-  border-top-right-radius: 10px;
-  text-align: center;
+/* Glass effect for navbar and chat UI */
+.glass-effect {
+  background: #ffffff1f;
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.466);
 }
 
+/* Media div fade in */
+.fade-in{
+  animation: fadeIn 0.5s ease-in
+}
+
+/* Media div fade out animation */
+.fade-out {
+  animation: fadeOut 0.5s ease-out;
+}
+
+@keyframes fadeIn {
+  from{
+    opacity: 0;
+  }
+  to{
+    opacity: 1;
+  }
+}
+
+@keyframes fadeOut {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}
+
+/* Ensure the chat body is scrollable */
 .chat-body {
-  flex: 1;
-  padding: 20px;
   overflow-y: auto;
 }
 
-.chat-message {
-  margin-bottom: 15px;
-  padding: 10px;
-  border-radius: 10px;
-  max-width: 70%;
-  word-wrap: break-word;
-}
-
-.chat-message.user {
-  background-color: #007bff;
-  color: white;
-  align-self: flex-end;
-}
-
-.chat-message.mufasha {
-  background-color: #f1f1f1fb;
-  color: black;
-  align-self: flex-start;
-}
-
-.chat-footer {
-  display: flex;
-  padding: 10px;
-  background-color: #1f1d1d;
-  border-bottom-left-radius: 10px;
-  border-bottom-right-radius: 10px;
-}
-
-.chat-footer input {
-  flex: 1;
-  padding: 10px;
-  border: 1px solid #ccc;
-  border-radius: 5px;
-  outline: none;
-  color: #fff;
-}
-
-.chat-footer button {
-  padding: 10px 20px;
-  margin-left: 10px;
-  border: none;
-  border-radius: 5px;
-  background-color: #007bff;
-  color: white;
-  cursor: pointer;
-}
-
-.chat-footer button:hover {
-  background-color: #0056b3;
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .navbar {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .full-height {
+    height: calc(100vh - 120px); /* Adjust based on navbar height on smaller screens */
+  }
+  .chat-footer textarea {
+    height: 40px;
+  }
+  .chat-footer button {
+    height: 40px;
+  }
 }
