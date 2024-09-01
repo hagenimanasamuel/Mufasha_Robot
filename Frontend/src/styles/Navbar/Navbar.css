@@ -1,0 +1,21 @@
+/* Dropdown menu styling */
+.dropdown-menu {
+    background-color: #1a1a1a; /* Dark background */
+    border-radius: 8px;        /* Rounded corners */
+    padding: 8px;              /* Padding inside the dropdown */
+    min-width: 160px;          /* Minimum width */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+    z-index: 1000;             /* Ensure it appears above other elements */
+  }
+  
+  .dropdown-menu .p-2 {
+    padding: 8px;              /* Padding for each item */
+    font-size: 14px;           /* Font size */
+  }
+  
+  .dropdown-menu .p-2:hover {
+    background-color: #333;    /* Slightly lighter on hover */
+    border-radius: 4px;        /* Rounded hover effect */
+    cursor: pointer;           /* Pointer cursor on hover */
+  }
+  
