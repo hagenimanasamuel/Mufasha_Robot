@@ -8,6 +8,7 @@ export default function ChatUI() {
   const [input, setInput] = useState('');
   const [showMediaDiv, setShowMediaDiv] = useState(false);
   const [fadeOut, setFadeOut] = useState(false);
+  const [fadeIn, setFadeIn] = useState(false);
 
   const handleSend = () => {
     if (input.trim()) {
@@ -16,6 +17,7 @@ export default function ChatUI() {
       setInput('');
 
       if (input.toLowerCase().includes('image') || input.toLowerCase().includes('video')) {
+        setFadeIn(true)
         setShowMediaDiv(true);
         setFadeOut(false);  // Reset fade out if div is shown again
       }
@@ -43,6 +45,7 @@ export default function ChatUI() {
 
   const handleCloseMediaDiv = () => {
     setFadeOut(true);
+    setFadeIn(false)
     setTimeout(() => {
       setShowMediaDiv(false);
     }, 500);  // Match the duration of the CSS animation
@@ -56,15 +59,14 @@ export default function ChatUI() {
       {/* Chat content */}
       <div className="flex-grow flex p-2 gap-2 mt-[9.3vh]">
         {/* Left side: Humanoid face robot */}
-        <div className={`flex justify-center items-center bg-gray-900 p-4 rounded-lg shadow-lg ${showMediaDiv ? 'w-1/3' : 'w-1/2'} full-height`}>
-          <div className="bg-gray-700 w-full h-full rounded-lg flex justify-center items-center">
+        <div className={`flex justify-center items-center bg-gray-800 p-4 rounded-lg shadow-lg ${showMediaDiv ? 'w-1/3' : 'w-1/2'} full-height`}>
             <span className="text-white">Humanoid Robot Face</span>
-          </div>
+          
         </div>
 
         {/* Conditionally render the media container */}
         {showMediaDiv && (
-          <div className={`media-div w-1/3 flex flex-col justify-center items-center bg-gray-800 p-4 rounded-lg shadow-lg relative ${fadeOut ? 'fade-out' : ''} full-height`}>
+          <div className={`media-div w-1/3 flex flex-col justify-center items-center bg-gray-800 p-4 rounded-lg shadow-lg relative ${fadeOut ? 'fade-out' : ''} ${fadeIn ? 'fade-in' : ''} full-height`}>
             <button
               className="absolute top-2 right-2 text-white hover:text-gray-300"
               onClick={handleCloseMediaDiv}

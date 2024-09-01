@@ -12,9 +12,23 @@
   box-shadow: 0 4px 30px rgba(0, 0, 0, 0.466);
 }
 
+/* Media div fade in */
+.fade-in{
+  animation: fadeIn 0.5s ease-in
+}
+
 /* Media div fade out animation */
 .fade-out {
   animation: fadeOut 0.5s ease-out;
+}
+
+@keyframes fadeIn {
+  from{
+    opacity: 0;
+  }
+  to{
+    opacity: 1;
+  }
 }
 
 @keyframes fadeOut {
