@@ -29,6 +29,24 @@ export default function LandPage() {
     navigate("/chat");
   };
 
+  const handleGoogleLogin = () => {
+    window.gapi.load('auth2', () => {
+      window.gapi.auth2.init({
+        client_id: '523509043751-24lbfplv392klukjlctc842mj5hdl15u.apps.googleusercontent.com' // Replace with your Google Client ID
+      }).then((auth2) => {
+        auth2.signIn().then((googleUser) => {
+          // Handle sign-in
+          const profile = googleUser.getBasicProfile();
+          console.log('ID: ' + profile.getId());
+          console.log('Name: ' + profile.getName());
+          console.log('Image URL: ' + profile.getImageUrl());
+          console.log('Email: ' + profile.getEmail());
+          // You can now send the user data to your server or handle it as needed
+        });
+      });
+    });
+  };
+
   return (
     <div className="full-screen-container d-flex justify-content-between position-relative">
       
@@ -116,7 +134,11 @@ export default function LandPage() {
               </button>
             </div>
             <div className="col-12 mt-3">
-              <button className="btn btn-google w-100 d-flex align-items-center justify-content-center bg-blue-700 text-white">
+              <button
+                type="button"
+                className="btn btn-google w-100 d-flex align-items-center justify-content-center bg-blue-700 text-white"
+                onClick={handleGoogleLogin}
+              >
                 <FcGoogle className="google-icon" /> Log in with Google
               </button>
             </div>

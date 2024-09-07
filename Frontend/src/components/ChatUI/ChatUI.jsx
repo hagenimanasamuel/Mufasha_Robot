@@ -153,7 +153,7 @@ export default function ChatUI() {
 
         {/* Right Side: Chat UI */}
         <div className={`chat-ui-container ${showMediaDiv ? 'w-1/3' : 'w-1/2'} full-height flex flex-col rounded-lg shadow-2xl glass-effect`}>
-          <div className="bg-sky-500 p-3 rounded-t-lg text-center">
+          <div className="bg-gray-800 p-3 rounded-t-lg text-center">
             <h2 className="text-xl font-bold text-white">Mufasha AI Chat</h2>
           </div>
           <div className="chat-body flex-1 p-3 overflow-y-auto">
@@ -170,8 +170,8 @@ export default function ChatUI() {
           </div>
 
           {/* Chat footer with upload button */}
-          <div className="chat-footer flex mt-4 items-center">
-            <div className="relative flex items-center">
+          <div className="chat-footer flex items-center">
+            <div className="relative flex items-center flex-grow">
               {/* Upload Button */}
               <button
                 onClick={toggleUploadMenu}
@@ -198,7 +198,7 @@ export default function ChatUI() {
                 onChange={handleInputChange}
                 onKeyPress={handleKeyPress}
                 placeholder="Type your message..."
-                className="flex-1 p-2 rounded-r-lg bg-gray-800 text-white border border-gray-600 focus:outline-none resize-none overflow-hidden w-full"
+                className="flex-1 p-2 rounded-r-lg text-white border border-gray-600 focus:outline-none resize-none overflow-hidden"
                 rows={1}
                 style={{ minHeight: '40px', maxHeight: '200px' }}
               />
