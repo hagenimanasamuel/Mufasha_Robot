@@ -9,6 +9,11 @@ const Navbar = ({ isLoggedIn }) => {
     setShowDropdown(!showDropdown);
   };
 
+  //Handling navigation to home
+  const MufashaVersion = () => {
+    navigate("/");
+  };
+
   return (
     <nav className="navbar glass-effect fixed top-0 left-0 right-0 flex items-center justify-between p-3 z-50">
       {/* Left side: Mufasha logo and name */}
@@ -22,7 +27,7 @@ const Navbar = ({ isLoggedIn }) => {
         {/* Dropdown menu */}
         {showDropdown && (
           <div className="dropdown-menu absolute left-0 mt-2 w-48 bg-gray-800 text-white rounded-lg shadow-lg p-2 z-50">
-            <div className="p-2">Mufasha v1.0</div>
+            <div className="p-2" onClick={MufashaVersion}>Mufasha v1.0</div>
           </div>
         )}
       </div>

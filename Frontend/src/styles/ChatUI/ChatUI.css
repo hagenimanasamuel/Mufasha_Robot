@@ -1,4 +1,3 @@
-
 /* Full height for containers */
 .full-height {
   height: calc(100vh - 70px); /* Adjust based on navbar height, keeping 5px gap */
@@ -13,8 +12,8 @@
 }
 
 /* Media div fade in */
-.fade-in{
-  animation: fadeIn 0.5s ease-in
+.fade-in {
+  animation: fadeIn 0.5s ease-in;
 }
 
 /* Media div fade out animation */
@@ -23,10 +22,10 @@
 }
 
 @keyframes fadeIn {
-  from{
+  from {
     opacity: 0;
   }
-  to{
+  to {
     opacity: 1;
   }
 }
@@ -43,6 +42,54 @@
 /* Ensure the chat body is scrollable */
 .chat-body {
   overflow-y: auto;
+}
+
+/* Popup menu for file upload */
+.popup {
+  position: absolute;
+  top: 100%; /* Adjust to position correctly below the button */
+  left: 0;
+  background: #fff;
+  padding: 1rem;
+  border-radius: 0.5rem;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  z-index: 20;
+}
+
+.popup h4 {
+  margin-bottom: 1rem;
+}
+
+.popup ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.popup li {
+  margin-bottom: 0.5rem;
+}
+
+.popup button {
+  background: none;
+  border: none;
+  color: #007bff;
+  cursor: pointer;
+  text-decoration: underline;
+}
+
+.popup button:hover {
+  color: #0056b3;
+}
+
+/* Ensure the input and button are properly aligned */
+.chat-footer {
+  position: relative;
+}
+
+.upload-button {
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0;
 }
 
 /* Responsive adjustments */

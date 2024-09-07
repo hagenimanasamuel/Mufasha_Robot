@@ -1,138 +1,180 @@
-/* Full-screen container to take the entire viewport width and height */
+/* Full-screen container */
 .full-screen-container {
   width: 100vw;
   height: 100vh;
-  background-color: #000000d7; /* No background color */
   display: flex;
-  justify-content: space-around; /* Distribute space evenly around items */
-  align-items: center; /* Center items vertically */
-}
-
-/* Logo container */
-.logo-container {
-  display: flex;
-  flex-direction: column; /* Arrange children vertically */
+  justify-content: space-between; /* Space between left and right sides */
   align-items: center;
-  justify-content: center;
-  flex: 1; /* Allow flexbox to control the size */
-  text-align: center; /* Center text alignment */
+  position: relative;
+  background-color: black;
 }
 
-/* Large "M" logo styling */
-.logo {
-  font-size: 15rem; /* Larger font size for the logo */
-  color: rgb(0, 110, 255); /* Blue color for the letter "M" */
-  font-weight: bold;
+/* Left side container for slideshow and overlay */
+.left-side-container {
+  width: 50%;
+  height: 100%;
+  position: relative;
+  overflow: hidden;
 }
 
-/* Text under the logo */
-.continue-text {
-  font-size: 1.5rem; /* Increase font size for the text */
-  font-weight: bold; /* Make text bold */
-  color: rgb(100, 100, 100); /* Gray color for the text */
-  margin-top: 1rem; /* Space between logo and text */
-}
-
-/* Form container wrapper */
-.form-container-wrapper {
-  flex: 1; /* Allow flexbox to control the size */
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-/* Custom styles for the form container */
-.form-container {
-  width: 50%;                /* Set the width to 50% of the container */
-  background-color: none; /* Light gray background color */
-  color: #fff;
-  border-radius: 5px;       /* Add rounded corners */
-  padding: 20px;             /* Add padding inside the container */
-  position: relative;        /* Position relative for potential pseudo-elements */
-}
-
-.text-center{
-  color: #4285F4;
-  font-weight: bold;
-  font-size: 25px;
-}
-
-/* Ensure full-width buttons */
-.w-100 {
+.image-carousel {
   width: 100%;
+  height: 100%;
+  position: absolute;
+  display: flex;
+  animation: slideshow 20s infinite;
 }
 
-/* Optional: Space between form elements */
-.form-label {
-  margin-bottom: 8px;
-  transition: color 0.3s ease; /* Smooth transition for color change */
+.carousel-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 
-/* Input focus styling */
-.input-group input:focus ~ .input-group-text {
-  color: blue; /* Change icon color when input is focused */
+/* Slideshow animation */
+@keyframes slideshow {
+  0% { opacity: 0; }
+  10% { opacity: 1; }
+  30% { opacity: 1; }
+  40% { opacity: 0; }
+  50% { opacity: 0; }
+  60% { opacity: 1; }
+  80% { opacity: 1; }
+  100% { opacity: 0; }
 }
 
-.input-group input:focus ~ .form-label {
-  color: blue; /* Change label color when input is focused */
+/* Overlay to darken the slideshow */
+.left-side-container .overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+/* Vertically center content in left side container */
+.overlay-content {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center; /* Center content vertically */
+  align-items: center; /* Center content horizontally */
+  padding: 20px;
+}
+
+/* Logo styling */
+.logo {
+  color: #fff;
+  margin-bottom: 20px; /* Space between logo and auto-typing text */
+  margin: 20px; /* Margin around the logo */
+}
+
+.logo img{
+  width: 20rem;
+  border-radius: 50%;
+}
+
+/* Auto-typing text */
+.auto-type {
+  font-size: 2rem;
+  color: #fff;
+  text-align: center;
+  margin-bottom: 20px; /* Space between auto-typing text and button */
+}
+
+/* Bottom content with button and text */
+.bottom-content {
+  text-align: center;
+}
+
+.text-white {
+  color: #fff;
+}
+
+.try-mufasha-btn {
+  margin-top: 10px;
+  padding: 10px 20px; /* Padding inside the button */
+  width: auto; /* Keep the original button width */
+  background-color: #4285F4; /* Button color */
+  border: none; /* Remove default border */
+  color: white; /* Text color */
+  border-radius: 5px; /* Rounded corners for button */
+  margin: 20px; /* Margin around the button */
+}
+
+/* Right side container for the form */
+.form-container-wrapper {
+  width: 40%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  margin: 0; /* Ensure no margin affects the alignment */
+  padding: 0; /* Ensure no padding affects the alignment */
+}
+
+/* Background image behind the form */
+.form-background {
+  position: absolute;
+  top: 0;
+  right: 0; /* Align to the right edge */
+  width: 100%;
+  height: 100%;
+  background: url('../../assets/LandingPage/gen1.png') no-repeat center center; /* Background image */
+  background-size: cover; /* Ensure the image covers the container */
+  z-index: 0;
+  border-radius: 50% 0 0 50%; /* Rounded corners on the top left side */
+}
+
+/* Black overlay on top of the background image */
+.form-background-overlay {
+  position: absolute;
+  top: 0;
+  right: 0; /* Align to the right edge */
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5); /* Black overlay with 50% opacity */
+  z-index: 1; /* Ensure the overlay is above the background image */
+}
+
+/* Form container with glassmorphism effect */
+.form-container {
+  position: relative;
+  padding: 20px;
+  border-radius: 15px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
+  background-color: rgba(255, 255, 255, 0.1); /* Transparent white background */
+  backdrop-filter: blur(8px); /* Glassmorphism effect */
+  color: #fff;
+  z-index: 2; /* Ensure form is above overlay */
+  width: 100%;
+  max-width: 400px;
+}
+
+/* Ensure the content is above the overlay */
+.form-container * {
+  position: relative;
+  z-index: 1;
+}
+
+/* Form styling */
+.text-center {
+  font-size: 25px;
+  font-weight: bold;
+  color: #4285F4;
 }
 
 .input-group input:focus {
-  border-color: blue; /* Change border color of input if desired */
-  outline: none; /* Remove default outline */
+  border-color: blue;
 }
 
-/* Google button styling */
-.btn-google {
-  background-color: #4285F4; /* Google blue color */
-  color: white;              /* Text color */
-  border: none;              /* Remove border */
-  border-radius: 5px;        /* Rounded corners */
-  padding: 10px;             /* Padding around text */
-  font-size: 1rem;           /* Font size */
-}
-
-.btn-google:hover {
-  background-color: #357AE8; /* Slightly darker blue on hover */
-  color: white;              /* Ensure text remains white on hover */
-}
-
-.google-icon {
-  margin-right: 8px; /* Space between icon and text */
-  font-size: 1.5rem; /* Adjust size of Google icon */
-}
-
-/* Try Mufasha button styling */
-.btn-try-mufasha {
-  background-color: rgb(0, 110, 255); /* Blue color */
-  color: white;                       /* Text color */
-  border: none;                       /* Remove border */
-  border-radius: 5px;                 /* Rounded corners */
-  padding: 15px;                      /* Larger padding around text */
-  font-size: 1.2rem;                  /* Larger font size */
-  margin-top: 20px;                   /* Space above the button */
-  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3); /* More prominent shadow */
-  transition: all 0.3s ease; /* Smooth transition for hover effect */
-}
-
-.btn-try-mufasha:hover {
-  background-color: rgb(0, 90, 220); /* Slightly darker blue on hover */
-  color: white;                      /* Ensure text remains white on hover */
-  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.4); /* Darker shadow on hover */
-}
-
-/* Responsive adjustment: Ensure form is not too small on mobile */
-@media (max-width: 768px) {
-  .logo-container {
-    display: none; /* Hide the logo on smaller screens */
-  }
-
-  .form-container-wrapper {
-    width: 100%; /* Make the form take up the full width on smaller screens */
-    justify-content: center; /* Center the form horizontally */
-  }
-
-  .form-container {
-    width: 90%;  /* Adjust width to 90% on smaller screens */
-  }
+.input-group input:focus ~ .input-group-text {
+  color: blue; /* Change icon color on focus */
 }
