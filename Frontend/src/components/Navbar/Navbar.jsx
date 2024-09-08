@@ -10,6 +10,7 @@ const Navbar = ({ isLoggedIn }) => {
   const [showModal, setShowModal] = useState(false);
   const [showProfileMenu, setShowProfileMenu] = useState(false);
   const [showSidebar, setShowSidebar] = useState(false);
+  const [showSignupModal, setShowSignupModal] = useState(false);
   const versionDropdownRef = useRef(null);
   const profileMenuRef = useRef(null);
   const sidebarRef = useRef(null);
@@ -55,9 +56,15 @@ const Navbar = ({ isLoggedIn }) => {
     setShowVersionDropdown(false); // Close the version dropdown
   };
 
+  // Show sign-up modal
+  const handleSignupClick = () => {
+    setShowSignupModal(true);
+  };
+
   // Close the modal
   const closeModal = () => {
     setShowModal(false);
+    setShowSignupModal(false);
   };
 
   // Handle log out
@@ -92,9 +99,9 @@ const Navbar = ({ isLoggedIn }) => {
         )}
       </div>
 
-      {/* Right side: User profile or accessibility icon */}
-      <div className="relative flex items-center space-x-1">
-        {isLoggedIn && (
+      {/* Right side: User profile or sign-up button */}
+      <div className="relative flex items-center space-x-2">
+        {isLoggedIn ? (
           <>
             <FaBars className="text-white cursor-pointer mr-2" onClick={toggleSidebar} /> {/* Menu icon */}
 
@@ -129,31 +136,49 @@ const Navbar = ({ isLoggedIn }) => {
               </div>
             )}
           </>
+        ) : (
+          <>
+            <span className="signup-info text-warning mr-4">Sign Up to Access all MufashaAI features</span>
+            <button className="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition-colors duration-300" onClick={handleSignupClick}>
+              Sign Up
+            </button>
+          </>
         )}
       </div>
 
       {/* Sidebar */}
-      <div
-        ref={sidebarRef}
-        className={`fixed right-0 top-0 w-64 h-full bg-gray-800 text-white p-4 shadow-lg z-50 transform transition-transform duration-300 ${showSidebar ? 'translate-x-0' : 'translate-x-full'}`}
-      >
-        <div className="text-lg font-bold mb-4">Menu</div>
-        <ul>
-          <li className="py-2 cursor-pointer hover:bg-gray-700">My Profile</li>
-          <li className="py-2 cursor-pointer hover:bg-gray-700">Accessibility</li>
-          <li className="py-2 cursor-pointer hover:bg-gray-700">Theme</li>
-          <li className="py-2 cursor-pointer hover:bg-gray-700">Go Premium</li>
-        </ul>
-        <div className="border-t border-gray-600 mt-4 pt-4">
-          <div className="text-lg font-bold mb-2">Follow Us</div>
-          <div className="flex space-x-2">
-            <FaFacebook className="text-blue-600 cursor-pointer" />
-            <FaInstagram className="text-pink-500 cursor-pointer" />
-            <FaTwitter className="text-blue-400 cursor-pointer" />
-            <FaGithub className="text-gray-300 cursor-pointer" />
+      {showSidebar && (
+        <>
+          {/* Full-screen semi-black overlay */}
+          <div
+            className="fixed inset-0 bg-black bg-opacity-50 z-40"
+            onClick={toggleSidebar} // Closes the sidebar when the overlay is clicked
+          ></div>
+
+          {/* Sidebar */}
+          <div
+            ref={sidebarRef}
+            className={`fixed right-0 top-0 w-64 h-full bg-gray-800 text-white p-4 shadow-lg z-50 transform transition-transform duration-300 ${showSidebar ? 'translate-x-0' : 'translate-x-full'}`}
+          >
+            <div className="text-lg font-bold mb-4">Menu</div>
+            <ul>
+              <li className="py-2 cursor-pointer hover:bg-gray-700">My Profile</li>
+              <li className="py-2 cursor-pointer hover:bg-gray-700">Accessibility</li>
+              <li className="py-2 cursor-pointer hover:bg-gray-700">Theme</li>
+              <li className="py-2 cursor-pointer hover:bg-gray-700">Go Premium</li>
+            </ul>
+            <div className="border-t border-gray-600 mt-4 pt-4">
+              <div className="text-lg font-bold mb-2">Follow Us</div>
+              <div className="flex space-x-2">
+                <FaFacebook className="text-blue-600 cursor-pointer" />
+                <FaInstagram className="text-pink-500 cursor-pointer" />
+                <FaTwitter className="text-blue-400 cursor-pointer" />
+                <FaGithub className="text-gray-300 cursor-pointer" />
+              </div>
+            </div>
           </div>
-        </div>
-      </div>
+        </>
+      )}
 
       {/* Modal for Beta version */}
       {showModal && (
@@ -166,6 +191,33 @@ const Navbar = ({ isLoggedIn }) => {
               className="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition-colors duration-300"
             >
               Close
+            </button>
+          </div>
+        </div>
+      )}
+
+      {/* Modal for Sign Up */}
+      {showSignupModal && (
+        <div className="fixed inset-0 bg-black bg-opacity-60 flex items-start justify-center z-50 p-4">
+          <div className="bg-gray-800 text-white p-6 rounded-lg shadow-lg max-w-sm w-full mt-10">
+            <h3 className="text-xl font-bold mb-4">Sign Up</h3>
+            <form>
+              <label htmlFor="username" className="block mb-2">Username</label>
+              <input type="text" id="username" name="username" className="w-full p-2 mb-4 bg-gray-700 border border-gray-600 rounded-lg" required />
+              <label htmlFor="password" className="block mb-2">Password</label>
+              <input type="password" id="password" name="password" className="w-full p-2 mb-4 bg-gray-700 border border-gray-600 rounded-lg" required />
+              <button
+                type="submit"
+                className="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition-colors duration-300"
+              >
+                Sign Up
+              </button>
+            </form>
+            <button
+              onClick={closeModal}
+              className="absolute top-2 right-2 text-white text-2xl"
+            >
+              &times;
             </button>
           </div>
         </div>

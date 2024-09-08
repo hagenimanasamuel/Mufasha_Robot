@@ -1,23 +1,110 @@
+/* Base navbar styling */
+.navbar {
+  background-color: #333;
+  color: #fff;
+  padding: 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: relative;
+}
+
+/* Right side of the navbar */
+.navbar-right {
+  display: flex;
+  align-items: center;
+}
+
+.signup-info {
+  margin-right: 10px;
+  color: #fff;
+  /* Apply the fading animation */
+  animation: fadeInOut 3s infinite; /* Adjust the duration as needed */
+}
+
+/* Fading animation */
+@keyframes fadeInOut {
+  0% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.5;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+.signup-button {
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.signup-button:hover {
+  background-color: #0056b3;
+}
+
 /* Dropdown menu styling */
 .dropdown-menu {
-    background-color: #1a1a1a; /* Dark background */
-    border-radius: 8px;        /* Rounded corners */
-    padding: 8px;              /* Padding inside the dropdown */
-    min-width: 160px;          /* Minimum width */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow */
-    z-index: 1000;             /* Ensure it appears above other elements */
-  }
-  
-  .dropdown-menu .p-2 {
-    padding: 8px;              /* Padding for each item */
-    font-size: 14px;           /* Font size */
-  }
-  
-  .dropdown-menu .p-2:hover {
-    background-color: #333;    /* Slightly lighter on hover */
-    border-radius: 4px;        /* Rounded hover effect */
-    cursor: pointer;           /* Pointer cursor on hover */
-  }
+  background-color: #1a1a1a; /* Dark background */
+  border-radius: 8px;        /* Rounded corners */
+  padding: 8px;              /* Padding inside the dropdown */
+  min-width: 160px;          /* Minimum width */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+  z-index: 1000;             /* Ensure it appears above other elements */
+}
+
+.dropdown-menu .p-2 {
+  padding: 8px;              /* Padding for each item */
+  font-size: 14px;           /* Font size */
+}
+
+.dropdown-menu .p-2:hover {
+  background-color: #333;    /* Slightly lighter on hover */
+  border-radius: 4px;        /* Rounded hover effect */
+  cursor: pointer;           /* Pointer cursor on hover */
+}
+
+/* Modal styling */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.modal-content {
+  background: #fff;
+  padding: 20px;
+  border-radius: 5px;
+  width: 400px;
+  position: relative;
+  animation: fadeIn 0.3s ease-out; /* Apply animation on modal open */
+}
+
+.modal-close {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: none;
+  border: none;
+  font-size: 20px;
+  cursor: pointer;
+  color: #333;
+}
+
+.modal-close:hover {
+  color: #f00;
+}
 
 /* Optional: Modal animation */
 @keyframes fadeIn {
@@ -50,6 +137,3 @@
 .modal-exit {
   animation: fadeOut 0.3s ease-in;
 }
-
-
-  
