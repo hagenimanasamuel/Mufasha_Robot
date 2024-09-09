@@ -137,3 +137,19 @@
 .modal-exit {
   animation: fadeOut 0.3s ease-in;
 }
+.auto-type-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.auto-type {
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+.auto-type-fixed {
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin-left: 8px; /* A little space between typed text and "MufashaAI" */
+}

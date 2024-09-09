@@ -1,5 +1,6 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { FaChevronDown, FaUserCircle, FaSignOutAlt, FaBars, FaFacebook, FaInstagram, FaTwitter, FaGithub } from 'react-icons/fa';
+import { useNavigate } from 'react-router-dom';
 
 // Placeholder profile picture
 const profilePic = 'https://via.placeholder.com/40'; // Replace with actual profile picture URL
@@ -56,22 +57,20 @@ const Navbar = ({ isLoggedIn }) => {
     setShowVersionDropdown(false); // Close the version dropdown
   };
 
-  // Show sign-up modal
-  const handleSignupClick = () => {
-    setShowSignupModal(true);
-  };
-
-  // Close the modal
-  const closeModal = () => {
-    setShowModal(false);
-    setShowSignupModal(false);
-  };
-
   // Handle log out
   const handleLogout = () => {
     console.log('Logging out...');
     // Implement logout functionality here
+    navigate('/signup')
   };
+
+  //Handle signup redirect
+
+  const navigate = useNavigate();
+
+  const handleSignupClick = () => {
+    navigate('/signup')
+  }
 
   return (
     <nav className="navbar glass-effect fixed top-0 left-0 right-0 flex items-center justify-between p-3 z-50 bg-gray-800 bg-opacity-70 backdrop-blur-md border-b border-gray-700">
