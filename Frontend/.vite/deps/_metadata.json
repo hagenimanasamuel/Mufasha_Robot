@@ -1,55 +1,82 @@
 {
-  "hash": "d07f09f7",
+  "hash": "79e4bcb0",
   "configHash": "96607411",
-  "lockfileHash": "b5c268d1",
-  "browserHash": "81e25e96",
+  "lockfileHash": "ebfe24c1",
+  "browserHash": "79ec2eeb",
   "optimized": {
     "react": {
       "src": "../../node_modules/react/index.js",
       "file": "react.js",
-      "fileHash": "c1cbd1ae",
+      "fileHash": "78e056c4",
       "needsInterop": true
     },
     "react-dom/client": {
       "src": "../../node_modules/react-dom/client.js",
       "file": "react-dom_client.js",
-      "fileHash": "03ada1e5",
+      "fileHash": "3f90e4e2",
       "needsInterop": true
+    },
+    "@react-oauth/google": {
+      "src": "../../node_modules/@react-oauth/google/dist/index.esm.js",
+      "file": "@react-oauth_google.js",
+      "fileHash": "43555af8",
+      "needsInterop": false
     },
     "react-router-dom": {
       "src": "../../node_modules/react-router-dom/dist/index.js",
       "file": "react-router-dom.js",
-      "fileHash": "0f2abbab",
+      "fileHash": "0b9150dc",
+      "needsInterop": false
+    },
+    "react-icons/fa": {
+      "src": "../../node_modules/react-icons/fa/index.mjs",
+      "file": "react-icons_fa.js",
+      "fileHash": "9db64beb",
+      "needsInterop": false
+    },
+    "axios": {
+      "src": "../../node_modules/axios/index.js",
+      "file": "axios.js",
+      "fileHash": "c7fdb819",
       "needsInterop": false
     },
     "react-icons/bi": {
       "src": "../../node_modules/react-icons/bi/index.mjs",
       "file": "react-icons_bi.js",
-      "fileHash": "032e1336",
+      "fileHash": "3143c7a0",
       "needsInterop": false
     },
     "react-icons/md": {
       "src": "../../node_modules/react-icons/md/index.mjs",
       "file": "react-icons_md.js",
-      "fileHash": "b7d8dd92",
+      "fileHash": "88d3622b",
       "needsInterop": false
     },
     "react-icons/fc": {
       "src": "../../node_modules/react-icons/fc/index.mjs",
       "file": "react-icons_fc.js",
-      "fileHash": "f77872ef",
+      "fileHash": "4d5c6d29",
+      "needsInterop": false
+    },
+    "typed.js": {
+      "src": "../../node_modules/typed.js/dist/typed.module.js",
+      "file": "typed__js.js",
+      "fileHash": "9393ea0d",
       "needsInterop": false
     }
   },
   "chunks": {
-    "chunk-QPG7G3M7": {
-      "file": "chunk-QPG7G3M7.js"
+    "chunk-TNTPHDQH": {
+      "file": "chunk-TNTPHDQH.js"
     },
-    "chunk-YS7ZXTDS": {
-      "file": "chunk-YS7ZXTDS.js"
+    "chunk-QVXJH6VV": {
+      "file": "chunk-QVXJH6VV.js"
     },
-    "chunk-UTEJFLXC": {
-      "file": "chunk-UTEJFLXC.js"
+    "chunk-32E4H3EV": {
+      "file": "chunk-32E4H3EV.js"
+    },
+    "chunk-G3PMV62Z": {
+      "file": "chunk-G3PMV62Z.js"
     }
   }
 }

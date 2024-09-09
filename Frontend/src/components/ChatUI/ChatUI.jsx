@@ -161,7 +161,7 @@ export default function ChatUI() {
 
   return (
     <div className="bg-black min-h-screen flex flex-col">
-      <Navbar isLoggedIn={false} />
+      <Navbar isLoggedIn={true} />
 
       <div className="flex-grow flex p-2 gap-2 mt-[9.3vh]">
         <div className={`flex justify-center items-center p-4 rounded-lg shadow-lg ${showMediaDiv ? 'w-1/3' : 'w-1/2'} full-height`} style={{backgroundColor: 'transparent' }}>
