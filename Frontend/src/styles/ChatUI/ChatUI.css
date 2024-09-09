@@ -1,48 +1,85 @@
-
-/* Full height for containers */
-.full-height {
-  height: calc(100vh - 70px); /* Adjust based on navbar height, keeping 5px gap */
-}
-
-/* Glass effect for navbar and chat UI */
-.glass-effect {
-  background: #ffffff1f;
-  backdrop-filter: blur(10px);
-  border: 1px solid rgba(255, 255, 255, 0.3);
-  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.466);
-}
-
-/* Media div fade in */
-.fade-in{
-  animation: fadeIn 0.5s ease-in
-}
-
-/* Media div fade out animation */
-.fade-out {
-  animation: fadeOut 0.5s ease-out;
-}
-
-@keyframes fadeIn {
-  from{
-    opacity: 0;
-  }
-  to{
-    opacity: 1;
-  }
-}
-
-@keyframes fadeOut {
-  from {
-    opacity: 1;
-  }
-  to {
-    opacity: 0;
-  }
-}
-
 /* Ensure the chat body is scrollable */
 .chat-body {
   overflow-y: auto;
+}
+
+/* Updated position for uploaded file preview */
+.uploaded-file-preview {
+  position: relative;
+  margin-bottom: 10px;
+  width: 100%;
+}
+
+textarea {
+  resize: none;
+  width: 100%;
+  min-height: 40px;
+  max-height: 200px;
+  background-color: #1f1f1f;
+  color: #fff;
+  border: 1px solid #333;
+  border-radius: 4px;
+}
+
+.send-button {
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  padding: 10px;
+  cursor: pointer;
+  margin-left: 10px;
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
+}
+
+.send-button:hover {
+  background-color: #0056b3;
+}
+
+/* Ensure the input and button are properly aligned */
+.chat-footer {
+  position: relative;
+  display: flex;
+  align-items: center;
+  padding: 10px;
+  background-color: #1f1f1f;
+  border-top: 1px solid #333;
+}
+
+.upload-button {
+  position: relative;
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0;
+}
+
+.upload-menu {
+  position: absolute;
+  bottom: 50px;
+  left: 0;
+  background-color: #333;
+  border-radius: 4px;
+  padding: 5px;
+  z-index: 10;
+}
+
+.upload-menu ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.upload-menu li {
+  padding: 10px;
+  cursor: pointer;
+  color: #fff;
+}
+
+.upload-menu li:hover {
+  background-color: #444;
+}
+
+.is-recording {
+  background-color: #ff0000;
 }
 
 /* Responsive adjustments */
