@@ -1,9 +1,10 @@
 import React, { useState, useRef, useEffect } from 'react';
-import { FaPaperPlane, FaTimes, FaRegPlusSquare, FaFile, FaImage, FaVideo, FaAudioDescription, FaMicrophone } from 'react-icons/fa';
+import { FaPaperPlane, FaTimes, FaRegPlusSquare, FaMicrophone } from 'react-icons/fa';
 import robot from '../../assets/ChatUI/humanoid-face-robot.png';
 import Navbar from '../Navbar/Navbar';
 import "../../styles/ChatUI/ChatUI.css";
 import axios from 'axios';
+import WelcomeModal from '../WelcomeModal/WelcomeModal';
 
 export default function ChatUI() {
   const [messages, setMessages] = useState([]);
@@ -16,9 +17,11 @@ export default function ChatUI() {
   const [isRecording, setIsRecording] = useState(false);
   const uploadMenuRef = useRef(null);
   const recognitionRef = useRef(null);
+  const chatBodyRef = useRef(null); // Ref for chat body div
+  const [showModal, setShowModal] = useState(false)
 
-  // API Key for Gemini (Replace with your actual API key)
-  const GEMINI_API_KEY = "YOUR_GEMINI_API_KEY"; // Replace this with your actual API key
+  // API endpoint for your Flask backend
+  const API_URL = "http://127.0.0.1:5000/api/chat"; // Ensure this matches your Flask backend URL
 
   useEffect(() => {
     if (window.SpeechRecognition || window.webkitSpeechRecognition) {
@@ -41,6 +44,13 @@ export default function ChatUI() {
     }
   }, []);
 
+  useEffect(() => {
+    // Auto-scroll to the bottom when messages change
+    if (chatBodyRef.current) {
+      chatBodyRef.current.scrollTop = chatBodyRef.current.scrollHeight;
+    }
+  }, [messages]);
+
   const handleSend = async () => {
     if (input.trim()) {
       const newMessages = [...messages, { text: input, sender: 'user', file: uploadedFile }];
@@ -55,32 +65,22 @@ export default function ChatUI() {
       }
 
       try {
-        // Make API request to Gemini
-        const response = await axios.post(
-          'https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash-latest:generateContent?key=AIzaSyCgNyoCpjKQpoa1-kQTJ6vKlrM56_IWCUM',
-          {
-            message: input,
-          },
-          {
-            headers: {
-              'Authorization': `Bearer ${GEMINI_API_KEY}`,
-              'Content-Type': 'application/json'
-            },
-            data: { message: messages },
-          }
-        );
+        // Make API request to Flask backend
+        const response = await axios.post(API_URL, {
+          message: input,
+        });
 
-        const botResponse = response.data.reply;
+        const botResponse = response.data.response;
         const mufashaResponse = `Mufasha: ${botResponse}`;
         setMessages([...newMessages, { text: mufashaResponse, sender: 'mufasha' }]);
       } catch (error) {
-        console.error('Error sending message to Gemini API', error);
+        console.error('Error sending message to Flask API', error);
         setMessages([...newMessages, { text: "Mufasha: Sorry, I couldn't process your request.", sender: 'mufasha' }]);
       }
 
       setTimeout(() => {
         setFadeIn(false);
-      }, 500);
+      });
     }
   };
 
@@ -159,9 +159,22 @@ export default function ChatUI() {
     };
   }, []);
 
+  //Showing the welcome modal
+  useEffect(() => {
+    // Check if the user has visited before
+    if (!localStorage.getItem('visited')) {
+      setShowModal(true);
+      localStorage.setItem('visited', 'true'); // Set flag in localStorage
+    }
+  }, []);
+
+  const handleCloseModal = () => {
+    setShowModal(false);
+  };
+
   return (
     <div className="bg-black min-h-screen flex flex-col">
-      <Navbar isLoggedIn={true} />
+      <Navbar isLoggedIn={false} />
 
       <div className="flex-grow flex p-2 gap-2 mt-[9.3vh]">
         <div className={`flex justify-center items-center p-4 rounded-lg shadow-lg ${showMediaDiv ? 'w-1/3' : 'w-1/2'} full-height`} style={{backgroundColor: 'transparent' }}>
@@ -180,7 +193,6 @@ export default function ChatUI() {
           >
             <FaMicrophone size={20} />          
             <p className='text-white'>Voice Chat</p>
-
           </button>
         </div>
 
@@ -202,7 +214,8 @@ export default function ChatUI() {
           <div className="bg-gray-800 p-3 rounded-t-lg text-center">
             <h2 className="text-xl font-bold text-white">Mufasha AI Chat</h2>
           </div>
-          <div className="chat-body flex-1 p-3 overflow-y-auto">
+          {showModal && <WelcomeModal onClose={handleCloseModal} />}
+          <div ref={chatBodyRef} className="chat-body p-3">
             {messages.map((msg, index) => (
               <div
                 key={index}

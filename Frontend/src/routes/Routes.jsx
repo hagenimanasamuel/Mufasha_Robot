@@ -8,7 +8,7 @@ const AppRoutes = () => {
     <Router>
       <Routes>
         {/* route for the Mufasha AI chat interface */}
-        <Route path="/chat" element={<ChatUI />} />
+        <Route path="/" element={<ChatUI />} />
         {/*route for the landing page */}
         <Route path="/signup" element={<SignUp />} />
       </Routes>
