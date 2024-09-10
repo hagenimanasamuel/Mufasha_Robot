@@ -57,6 +57,11 @@ const Navbar = ({ isLoggedIn }) => {
     setShowVersionDropdown(false); // Close the version dropdown
   };
 
+  //Handle close Modal
+  const closeModal = () => {
+    setShowModal(false)
+  }
+
   // Handle log out
   const handleLogout = () => {
     console.log('Logging out...');
@@ -186,7 +191,7 @@ const Navbar = ({ isLoggedIn }) => {
             <h3 className="text-xl font-bold mb-4">New Version Available!</h3>
             <p className="mb-4">The Mufasha v2.0 is currently under development. We will notify you once it is released. Stay tuned!</p>
             <button
-              onClick={closeModal}
+            onClick={closeModal}
               className="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition-colors duration-300"
             >
               Close

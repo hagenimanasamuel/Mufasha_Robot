@@ -6,7 +6,12 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  position: relative;
+  position: fixed; /* Fixed positioning for the navbar */
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 60px; /* Adjust height to minimize space taken */
+  z-index: 50; /* Ensure it stays on top */
 }
 
 /* Right side of the navbar */
@@ -18,8 +23,7 @@
 .signup-info {
   margin-right: 10px;
   color: #fff;
-  /* Apply the fading animation */
-  animation: fadeInOut 3s infinite; /* Adjust the duration as needed */
+  animation: fadeInOut 3s infinite;
 }
 
 /* Fading animation */
@@ -50,23 +54,23 @@
 
 /* Dropdown menu styling */
 .dropdown-menu {
-  background-color: #1a1a1a; /* Dark background */
-  border-radius: 8px;        /* Rounded corners */
-  padding: 8px;              /* Padding inside the dropdown */
-  min-width: 160px;          /* Minimum width */
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow */
-  z-index: 1000;             /* Ensure it appears above other elements */
+  background-color: #1a1a1a;
+  border-radius: 8px;
+  padding: 8px;
+  min-width: 160px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  z-index: 1000;
 }
 
 .dropdown-menu .p-2 {
-  padding: 8px;              /* Padding for each item */
-  font-size: 14px;           /* Font size */
+  padding: 8px;
+  font-size: 14px;
 }
 
 .dropdown-menu .p-2:hover {
-  background-color: #333;    /* Slightly lighter on hover */
-  border-radius: 4px;        /* Rounded hover effect */
-  cursor: pointer;           /* Pointer cursor on hover */
+  background-color: #333;
+  border-radius: 4px;
+  cursor: pointer;
 }
 
 /* Modal styling */
@@ -88,7 +92,7 @@
   border-radius: 5px;
   width: 400px;
   position: relative;
-  animation: fadeIn 0.3s ease-out; /* Apply animation on modal open */
+  animation: fadeIn 0.3s ease-out;
 }
 
 .modal-close {
@@ -129,7 +133,6 @@
   }
 }
 
-/* Apply the animation */
 .modal-enter {
   animation: fadeIn 0.3s ease-out;
 }
@@ -137,6 +140,7 @@
 .modal-exit {
   animation: fadeOut 0.3s ease-in;
 }
+
 .auto-type-container {
   display: flex;
   justify-content: center;
@@ -151,5 +155,5 @@
 .auto-type-fixed {
   font-size: 1.5rem;
   font-weight: bold;
-  margin-left: 8px; /* A little space between typed text and "MufashaAI" */
+  margin-left: 8px;
 }

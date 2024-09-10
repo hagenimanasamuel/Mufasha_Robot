@@ -35,7 +35,7 @@ export default function SignUp() {
     console.log("Google ID token:", credentialResponse.credential);
     // Here, you can send the token to your backend server for verification or process it further
   
-    navigate('/chat')
+    navigate('/')
   };
 
   // Handle Google Sign-In failure
