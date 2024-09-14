@@ -1,6 +1,6 @@
 /* Base navbar styling */
 .navbar {
-  background-color: #333;
+  background-color: #000;
   color: #fff;
   padding: 10px;
   display: flex;
@@ -11,45 +11,46 @@
   left: 0;
   right: 0;
   height: 60px; /* Adjust height to minimize space taken */
+  border-bottom: 1px solid #333; /* Border bottom for the navbar */
   z-index: 50; /* Ensure it stays on top */
 }
 
-/* Right side of the navbar */
-.navbar-right {
-  display: flex;
-  align-items: center;
+/* Hover animation for the icons on the left */
+.animate-icon {
+  transition: transform 0.3s ease;
 }
 
-.signup-info {
-  margin-right: 10px;
-  color: #fff;
-  animation: fadeInOut 3s infinite;
+.animate-icon:hover {
+  transform: scale(1.1);
 }
 
-/* Fading animation */
-@keyframes fadeInOut {
+/* Animation for the profile picture border */
+.profile-pic-border {
+  animation: popBorder 1s ease-in-out;
+}
+
+@keyframes popBorder {
   0% {
-    opacity: 1;
+    border: 2px solid transparent;
   }
   50% {
-    opacity: 0.5;
+    border: 2px solid blue;
   }
   100% {
-    opacity: 1;
+    border: 2px solid transparent;
   }
 }
 
-.signup-button {
-  background-color: #007bff;
-  color: #fff;
-  border: none;
-  padding: 10px 20px;
-  border-radius: 5px;
-  cursor: pointer;
+/* Message for logged-out users */
+.signup-info {
+  display: none;
+  color: yellow;
+  font-size: 14px;
+  margin-left: 10px;
 }
 
-.signup-button:hover {
-  background-color: #0056b3;
+.show-message .signup-info {
+  display: inline;
 }
 
 /* Dropdown menu styling */
@@ -60,54 +61,73 @@
   min-width: 160px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   z-index: 1000;
+  position: absolute;
+  top: 100%; /* Position below the navbar */
+  left: 0;
+  transform: scaleY(0);
+  transform-origin: top;
+  transition: transform 0.3s ease;
 }
 
-.dropdown-menu .p-2 {
-  padding: 8px;
-  font-size: 14px;
+.dropdown-menu.open {
+  transform: scaleY(1);
 }
 
-.dropdown-menu .p-2:hover {
+/* Sidebar styles */
+.sidebar {
+  position: fixed; /* Fixed positioning for the sidebar */
+  top: 60px; /* Adjust top to be below the navbar */
+  right: 0;
+  width: 250px;
+  height: calc(100vh - 60px); /* Full height minus navbar height */
   background-color: #333;
-  border-radius: 4px;
-  cursor: pointer;
+  color: #fff;
+  padding: 20px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+  transform: scaleY(0);
+  transform-origin: right;
+  transition: transform 0.3s ease;
+  z-index: 40; /* Ensure it appears above the overlay */
 }
 
-/* Modal styling */
-.modal-overlay {
+.sidebar.open {
+  transform: scaleY(1);
+}
+
+.sidebar-overlay {
   position: fixed;
   top: 0;
   left: 0;
   right: 0;
   bottom: 0;
   background: rgba(0, 0, 0, 0.5);
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  z-index: 30; /* Ensure it appears below the sidebar but above other content */
+  opacity: 0;
+  transition: opacity 0.3s ease;
 }
 
-.modal-content {
-  background: #fff;
-  padding: 20px;
-  border-radius: 5px;
-  width: 400px;
-  position: relative;
-  animation: fadeIn 0.3s ease-out;
+.sidebar-overlay.show {
+  opacity: 1;
 }
 
-.modal-close {
+/* Accessibility Dropdown */
+.accessibility-dropdown {
+  background-color: #1a1a1a;
+  border-radius: 8px;
+  padding: 8px;
+  min-width: 160px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  z-index: 1000;
   position: absolute;
-  top: 10px;
-  right: 10px;
-  background: none;
-  border: none;
-  font-size: 20px;
-  cursor: pointer;
-  color: #333;
+  top: 100%; /* Position below the navbar */
+  right: 0;
+  transform: scaleY(0);
+  transform-origin: top;
+  transition: transform 0.3s ease;
 }
 
-.modal-close:hover {
-  color: #f00;
+.accessibility-dropdown.open {
+  transform: scaleY(1);
 }
 
 /* Optional: Modal animation */
@@ -139,21 +159,4 @@
 
 .modal-exit {
   animation: fadeOut 0.3s ease-in;
-}
-
-.auto-type-container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.auto-type {
-  font-size: 1.5rem;
-  font-weight: bold;
-}
-
-.auto-type-fixed {
-  font-size: 1.5rem;
-  font-weight: bold;
-  margin-left: 8px;
 }
